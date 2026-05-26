@@ -56,25 +56,4 @@ enum PetState: String {
     var shouldMirrorFrames: Bool {
         self == .running
     }
-
-    func quietFrameDuration(frameIndex: Int) -> TimeInterval {
-        guard isQuietThinking else { return frameDuration }
-
-        if closedEyeFrameIndexes.contains(frameIndex) {
-            return 0.1
-        }
-
-        return TimeInterval.random(in: 0.75...1.5)
-    }
-
-    private var closedEyeFrameIndexes: Set<Int> {
-        switch self {
-        case .idle:
-            return [1, 2, 3, 4]
-        case .waiting:
-            return [5]
-        default:
-            return []
-        }
-    }
 }
