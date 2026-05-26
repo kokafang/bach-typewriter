@@ -16,6 +16,7 @@ final class KeyboardMonitor {
     private let onTrustChanged: (AccessibilityGuide.PermissionStatus) -> Void
     private let onSignal: (Signal) -> Void
     private(set) var isTrusted: Bool = false
+    private var lastAcceptedKeyTime: TimeInterval = 0
 
     init(
         onKeyPress: @escaping () -> Void,
@@ -50,13 +51,11 @@ final class KeyboardMonitor {
         startEventTap()
 
         globalMonitor = NSEvent.addGlobalMonitorForEvents(matching: .keyDown) { [weak self] _ in
-            self?.emitSignal(source: "global-monitor")
-            self?.onKeyPress()
+            self?.handleKeyPress(source: "global-monitor")
         }
 
         localMonitor = NSEvent.addLocalMonitorForEvents(matching: .keyDown) { [weak self] event in
-            self?.emitSignal(source: "local-monitor")
-            self?.onKeyPress()
+            self?.handleKeyPress(source: "local-monitor")
             return event
         }
 
@@ -95,8 +94,7 @@ final class KeyboardMonitor {
                 }
 
                 DispatchQueue.main.async {
-                    monitor.emitSignal(source: "event-tap")
-                    monitor.onKeyPress()
+                    monitor.handleKeyPress(source: "event-tap")
                 }
 
                 return Unmanaged.passUnretained(event)
@@ -139,5 +137,13 @@ final class KeyboardMonitor {
 
     private func emitSignal(source: String) {
         onSignal(Signal(source: source, timestamp: Date()))
+    }
+
+    private func handleKeyPress(source: String) {
+        let now = ProcessInfo.processInfo.systemUptime
+        guard now - lastAcceptedKeyTime > 0.035 else { return }
+        lastAcceptedKeyTime = now
+        emitSignal(source: source)
+        onKeyPress()
     }
 }
