@@ -27,7 +27,6 @@ final class KeyboardMonitor {
         self.onTrustChanged = onTrustChanged
         self.onSignal = onSignal
         refreshTrust()
-        AccessibilityGuide.promptIfNeeded()
         start()
     }
 

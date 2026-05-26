@@ -9,6 +9,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     private let melodyPlayer = MelodyPlayer()
     private var keepFrontObserver: NSObjectProtocol?
     private var typingNotesEnabled = true
+    private var didShowKeyboardPermissionIntro = false
 
     func applicationDidFinishLaunching(_ notification: Notification) {
         NSApp.setActivationPolicy(.accessory)
@@ -99,6 +100,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         let note = melodyPlayer.next()
         print("Bach key press -> \(note.frequency)")
         soundEngine.play(note: note)
+        petWindowController?.revealForTyping()
         petWindowController?.setState(.running)
         petWindowController?.scheduleReturnToIdle()
     }
@@ -130,8 +132,10 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     private func showKeyboardPermissionIntroIfNeeded() {
+        guard !didShowKeyboardPermissionIntro else { return }
         let status = AccessibilityGuide.permissionStatus()
         guard !status.keyboardAccessGranted else { return }
+        didShowKeyboardPermissionIntro = true
 
         NSApp.activate(ignoringOtherApps: true)
 

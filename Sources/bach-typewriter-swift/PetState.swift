@@ -20,15 +20,15 @@ enum PetState: String {
         case .jumping: return 4
         case .failed: return 5
         case .waiting: return 6
-        case .running: return 7
+        case .running: return 1
         case .review: return 8
         }
     }
 
     var frames: Int {
         switch self {
-        case .idle, .waiting, .running, .review: return 6
-        case .runningRight, .runningLeft, .failed: return 8
+        case .idle, .waiting, .review: return 6
+        case .runningRight, .runningLeft, .running, .failed: return 8
         case .waving: return 4
         case .jumping: return 5
         }
@@ -54,6 +54,6 @@ enum PetState: String {
     }
 
     var shouldMirrorFrames: Bool {
-        self == .running
+        false
     }
 }
