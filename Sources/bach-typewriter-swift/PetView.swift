@@ -121,7 +121,7 @@ final class PetView: NSView {
     }
 
     private func scheduleThinkingShift() {
-        let delay = TimeInterval.random(in: 4.5...8.0)
+        let delay = TimeInterval.random(in: 1.8...2.4)
         thinkingTimer = Timer.scheduledTimer(withTimeInterval: delay, repeats: false) { [weak self] _ in
             self?.brieflyShiftThinkingFrame()
         }
