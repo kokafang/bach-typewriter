@@ -83,7 +83,6 @@ final class PetView: NSView {
 
         currentState = state
         frameIndex = 0
-        updateImageTransform()
         updateFrame()
         animationTimer?.invalidate()
         thinkingTimer?.invalidate()
@@ -103,7 +102,6 @@ final class PetView: NSView {
         imageView.wantsLayer = true
         imageView.layer?.magnificationFilter = .nearest
         imageView.layer?.minificationFilter = .nearest
-        imageView.layer?.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         addSubview(imageView)
         layoutImageView()
     }
@@ -122,12 +120,6 @@ final class PetView: NSView {
 
     private func updateFrame() {
         imageView.image = frameImages[currentState]?.first
-    }
-
-    private func updateImageTransform() {
-        imageView.layer?.setAffineTransform(
-            currentState.shouldMirrorDisplay ? CGAffineTransform(scaleX: -1, y: 1) : .identity
-        )
     }
 
     private func scheduleThinkingShift() {
@@ -171,11 +163,95 @@ final class PetView: NSView {
                 let y = totalHeight - ((state.row + 1) * cellHeight)
                 let rect = CGRect(x: x, y: y, width: cellWidth, height: cellHeight)
                 guard let cropped = cgImage.cropping(to: rect) else { continue }
-                let image = NSImage(cgImage: cropped, size: NSSize(width: cellWidth, height: cellHeight))
+                let outputImage = state.shouldMirrorFrames ? Self.mirroredAroundVisibleCenter(cropped) : cropped
+                let image = NSImage(cgImage: outputImage, size: NSSize(width: cellWidth, height: cellHeight))
                 frames.append(image)
             }
             frameImages[state] = frames
         }
+    }
+
+    private static func mirroredAroundVisibleCenter(_ image: CGImage) -> CGImage {
+        guard let visibleBounds = visiblePixelBounds(in: image) else { return image }
+
+        let width = image.width
+        let height = image.height
+        let colorSpace = CGColorSpaceCreateDeviceRGB()
+        let bitmapInfo = CGImageAlphaInfo.premultipliedLast.rawValue
+
+        guard let context = CGContext(
+            data: nil,
+            width: width,
+            height: height,
+            bitsPerComponent: 8,
+            bytesPerRow: width * 4,
+            space: colorSpace,
+            bitmapInfo: bitmapInfo
+        ) else {
+            return image
+        }
+
+        let axisX = visibleBounds.midX
+        context.clear(CGRect(x: 0, y: 0, width: width, height: height))
+        context.translateBy(x: axisX, y: 0)
+        context.scaleBy(x: -1, y: 1)
+        context.translateBy(x: -axisX, y: 0)
+        context.draw(image, in: CGRect(x: 0, y: 0, width: width, height: height))
+        return context.makeImage() ?? image
+    }
+
+    private static func visiblePixelBounds(in image: CGImage) -> CGRect? {
+        let width = image.width
+        let height = image.height
+        let bytesPerPixel = 4
+        let bytesPerRow = width * bytesPerPixel
+        var pixels = [UInt8](repeating: 0, count: height * bytesPerRow)
+        let colorSpace = CGColorSpaceCreateDeviceRGB()
+        let bitmapInfo = CGImageAlphaInfo.premultipliedLast.rawValue
+
+        let didDraw = pixels.withUnsafeMutableBytes { rawBuffer -> Bool in
+            guard let baseAddress = rawBuffer.baseAddress,
+                  let context = CGContext(
+                    data: baseAddress,
+                    width: width,
+                    height: height,
+                    bitsPerComponent: 8,
+                    bytesPerRow: bytesPerRow,
+                    space: colorSpace,
+                    bitmapInfo: bitmapInfo
+                  ) else {
+                return false
+            }
+
+            context.draw(image, in: CGRect(x: 0, y: 0, width: width, height: height))
+            return true
+        }
+
+        guard didDraw else { return nil }
+
+        var minX = width
+        var maxX = -1
+        var minY = height
+        var maxY = -1
+
+        for y in 0..<height {
+            for x in 0..<width {
+                let alpha = pixels[(y * bytesPerRow) + (x * bytesPerPixel) + 3]
+                guard alpha > 8 else { continue }
+                minX = min(minX, x)
+                maxX = max(maxX, x)
+                minY = min(minY, y)
+                maxY = max(maxY, y)
+            }
+        }
+
+        guard maxX >= minX, maxY >= minY else { return nil }
+        return CGRect(
+            x: CGFloat(minX),
+            y: CGFloat(minY),
+            width: CGFloat(maxX - minX + 1),
+            height: CGFloat(maxY - minY + 1)
+        )
     }
 
     private func layoutImageView() {
