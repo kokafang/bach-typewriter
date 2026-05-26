@@ -52,4 +52,8 @@ enum PetState: String {
             return false
         }
     }
+
+    var shouldMirrorFrames: Bool {
+        self == .running
+    }
 }

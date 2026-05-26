@@ -163,11 +163,35 @@ final class PetView: NSView {
                 let y = totalHeight - ((state.row + 1) * cellHeight)
                 let rect = CGRect(x: x, y: y, width: cellWidth, height: cellHeight)
                 guard let cropped = cgImage.cropping(to: rect) else { continue }
-                let image = NSImage(cgImage: cropped, size: NSSize(width: cellWidth, height: cellHeight))
+                let outputImage = state.shouldMirrorFrames ? Self.mirroredImage(from: cropped) : cropped
+                let image = NSImage(cgImage: outputImage, size: NSSize(width: cellWidth, height: cellHeight))
                 frames.append(image)
             }
             frameImages[state] = frames
         }
+    }
+
+    private static func mirroredImage(from image: CGImage) -> CGImage {
+        let width = image.width
+        let height = image.height
+        guard
+            let context = CGContext(
+                data: nil,
+                width: width,
+                height: height,
+                bitsPerComponent: image.bitsPerComponent,
+                bytesPerRow: 0,
+                space: image.colorSpace ?? CGColorSpaceCreateDeviceRGB(),
+                bitmapInfo: image.bitmapInfo.rawValue
+            )
+        else {
+            return image
+        }
+
+        context.translateBy(x: CGFloat(width), y: 0)
+        context.scaleBy(x: -1, y: 1)
+        context.draw(image, in: CGRect(x: 0, y: 0, width: width, height: height))
+        return context.makeImage() ?? image
     }
 
     private func layoutImageView() {
