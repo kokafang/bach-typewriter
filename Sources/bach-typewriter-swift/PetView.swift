@@ -79,6 +79,8 @@ final class PetView: NSView {
     }
 
     func setState(_ state: PetState) {
+        guard state != currentState else { return }
+
         currentState = state
         frameIndex = 0
         updateFrame()

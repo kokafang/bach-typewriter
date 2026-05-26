@@ -34,7 +34,7 @@ final class PetWindowController: NSWindowController {
 
     func scheduleReturnToIdle() {
         idleTimer?.invalidate()
-        idleTimer = Timer.scheduledTimer(withTimeInterval: 0.7, repeats: false) { [weak self] _ in
+        idleTimer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false) { [weak self] _ in
             self?.petView.setState(.idle)
         }
     }
