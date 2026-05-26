@@ -45,6 +45,20 @@ final class PetWindowController: NSWindowController {
         window.orderFrontRegardless()
     }
 
+    func revealForTyping() {
+        guard let window else { return }
+
+        if window.isMiniaturized {
+            window.deminiaturize(nil)
+        }
+        if !window.isVisible {
+            showWindow(nil)
+        }
+
+        moveBackOnScreenIfNeeded(window)
+        keepInFront()
+    }
+
     private func setupWindow(_ window: NSPanel) {
         window.titleVisibility = .hidden
         window.titlebarAppearsTransparent = true
@@ -61,8 +75,30 @@ final class PetWindowController: NSWindowController {
         window.maxSize = NSSize(width: 552, height: 624)
         window.contentView = petView
         window.makeFirstResponder(window.contentView)
+        moveBackOnScreenIfNeeded(window)
         window.orderFrontRegardless()
         startKeepFrontTimer()
+    }
+
+    private func moveBackOnScreenIfNeeded(_ window: NSWindow) {
+        let screens = NSScreen.screens
+        guard !screens.isEmpty else { return }
+
+        let frame = window.frame
+        let isVisibleOnAnyScreen = screens.contains { screen in
+            screen.visibleFrame.intersects(frame.insetBy(dx: frame.width * 0.45, dy: frame.height * 0.45))
+        }
+        guard !isVisibleOnAnyScreen else { return }
+
+        let mouseLocation = NSEvent.mouseLocation
+        let targetScreen = screens.first { $0.frame.contains(mouseLocation) } ?? NSScreen.main ?? screens[0]
+        let visibleFrame = targetScreen.visibleFrame
+        let margin: CGFloat = 28
+        let newOrigin = NSPoint(
+            x: min(max(visibleFrame.maxX - frame.width - margin, visibleFrame.minX + margin), visibleFrame.maxX - frame.width),
+            y: min(max(visibleFrame.minY + margin, visibleFrame.minY), visibleFrame.maxY - frame.height)
+        )
+        window.setFrameOrigin(newOrigin)
     }
 
     private func resizePet(by delta: NSPoint) {
