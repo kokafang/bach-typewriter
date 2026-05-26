@@ -53,7 +53,7 @@ enum PetState: String {
         }
     }
 
-    var shouldMirrorFrames: Bool {
+    var shouldMirrorDisplay: Bool {
         self == .running
     }
 }
