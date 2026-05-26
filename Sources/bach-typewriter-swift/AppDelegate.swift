@@ -74,6 +74,10 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         ) { [weak self] _ in
             self?.petWindowController?.keepInFront()
         }
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) { [weak self] in
+            self?.showKeyboardPermissionIntroIfNeeded()
+        }
     }
 
     func applicationWillTerminate(_ notification: Notification) {
@@ -123,6 +127,24 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         soundEngine.instrument = instrument
         statusController?.setSelectedInstrument(instrument)
         playTestNote()
+    }
+
+    private func showKeyboardPermissionIntroIfNeeded() {
+        let status = AccessibilityGuide.permissionStatus()
+        guard !status.keyboardAccessGranted else { return }
+
+        NSApp.activate(ignoringOtherApps: true)
+
+        let alert = NSAlert()
+        alert.messageText = "Bach Typewriter needs keyboard access"
+        alert.informativeText = "To play notes while you type in other apps, please enable Bach Typewriter in macOS Accessibility and Input Monitoring settings. After enabling it, restart Bach Typewriter."
+        alert.alertStyle = .informational
+        alert.addButton(withTitle: "Open Settings")
+        alert.addButton(withTitle: "Later")
+
+        if alert.runModal() == .alertFirstButtonReturn {
+            AccessibilityGuide.openSystemSettings()
+        }
     }
 
     private static func format(signal: KeyboardMonitor.Signal) -> String {
