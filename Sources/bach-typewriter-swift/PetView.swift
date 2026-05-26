@@ -121,28 +121,22 @@ final class PetView: NSView {
     }
 
     private func scheduleThinkingShift() {
-        let delay = TimeInterval.random(in: 1.8...2.4)
+        let delay = TimeInterval.random(in: 1.5...3.0)
         thinkingTimer = Timer.scheduledTimer(withTimeInterval: delay, repeats: false) { [weak self] _ in
-            self?.brieflyShiftThinkingFrame()
+            self?.shiftThinkingFrame()
         }
     }
 
-    private func brieflyShiftThinkingFrame() {
+    private func shiftThinkingFrame() {
         guard currentState.isQuietThinking else { return }
         guard let frames = frameImages[currentState], frames.count > 1 else {
             scheduleThinkingShift()
             return
         }
 
-        frameIndex = (frameIndex % (frames.count - 1)) + 1
+        frameIndex = (frameIndex + 1) % frames.count
         imageView.image = frames[frameIndex]
-
-        thinkingTimer = Timer.scheduledTimer(withTimeInterval: 0.35, repeats: false) { [weak self] _ in
-            guard let self, self.currentState.isQuietThinking else { return }
-            self.frameIndex = 0
-            self.updateFrame()
-            self.scheduleThinkingShift()
-        }
+        scheduleThinkingShift()
     }
 
     private func loadFrames() {
