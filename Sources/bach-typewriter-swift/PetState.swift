@@ -43,4 +43,13 @@ enum PetState: String {
         case .idle: return 0.16
         }
     }
+
+    var isQuietThinking: Bool {
+        switch self {
+        case .idle, .waiting:
+            return true
+        default:
+            return false
+        }
+    }
 }

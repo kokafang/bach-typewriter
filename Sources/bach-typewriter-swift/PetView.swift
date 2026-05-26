@@ -12,6 +12,7 @@ final class PetView: NSView {
     private let topInsetRatio: CGFloat = 34.0 / 260.0
     private var frameImages: [PetState: [NSImage]] = [:]
     private var animationTimer: Timer?
+    private var thinkingTimer: Timer?
     private var frameIndex = 0
     private(set) var currentState: PetState = .waiting
     private var isResizing = false
@@ -82,6 +83,13 @@ final class PetView: NSView {
         frameIndex = 0
         updateFrame()
         animationTimer?.invalidate()
+        thinkingTimer?.invalidate()
+
+        if state.isQuietThinking {
+            scheduleThinkingShift()
+            return
+        }
+
         animationTimer = Timer.scheduledTimer(withTimeInterval: state.frameDuration, repeats: true) { [weak self] _ in
             self?.advanceFrame()
         }
@@ -110,6 +118,31 @@ final class PetView: NSView {
 
     private func updateFrame() {
         imageView.image = frameImages[currentState]?.first
+    }
+
+    private func scheduleThinkingShift() {
+        let delay = TimeInterval.random(in: 4.5...8.0)
+        thinkingTimer = Timer.scheduledTimer(withTimeInterval: delay, repeats: false) { [weak self] _ in
+            self?.brieflyShiftThinkingFrame()
+        }
+    }
+
+    private func brieflyShiftThinkingFrame() {
+        guard currentState.isQuietThinking else { return }
+        guard let frames = frameImages[currentState], frames.count > 1 else {
+            scheduleThinkingShift()
+            return
+        }
+
+        frameIndex = (frameIndex % (frames.count - 1)) + 1
+        imageView.image = frames[frameIndex]
+
+        thinkingTimer = Timer.scheduledTimer(withTimeInterval: 0.35, repeats: false) { [weak self] _ in
+            guard let self, self.currentState.isQuietThinking else { return }
+            self.frameIndex = 0
+            self.updateFrame()
+            self.scheduleThinkingShift()
+        }
     }
 
     private func loadFrames() {
