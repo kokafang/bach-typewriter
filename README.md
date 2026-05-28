@@ -1,10 +1,28 @@
 # Bach Typewriter
 
-**Bach Typewriter** is a tiny native macOS companion: a floating animated Bach sits on your desktop and turns typing into a Baroque melody. Every key press advances through a Goldberg-inspired note sequence, so ordinary writing becomes a miniature harpsichord performance.
+**Bach Typewriter** is a tiny native macOS desktop companion that turns everyday typing into a Baroque keyboard performance. A floating animated Bach sits above your windows, listens only for key-down events, and advances through the Goldberg Variations note by note. Writing, chatting, and coding become a small harpsichord ritual.
 
-**Bach Typewriter** 是一个原生 macOS 桌面小伙伴：一只漂浮在桌面上的巴赫会跟着你打字，把每一次按键变成巴洛克旋律。你写字、聊天、敲代码时，它会按顺序播放一段受《哥德堡变奏曲》启发的音符，让键盘变成一台小小羽管键琴。
+**Bach Typewriter** 是一个原生 macOS 桌面小伙伴：一只漂浮在桌面上的巴赫会跟着你打字，把每一次按键变成巴洛克键盘旋律。它不会读取你输入的文字，只响应按键事件，并按顺序播放《哥德堡变奏曲》的音符，让写字、聊天和敲代码变成一场小小的羽管键琴仪式。
 
 ![Bach Typewriter spritesheet](Assets/spritesheet.png)
+
+## Download / 下载
+
+The latest shareable Apple Silicon build is available at:
+
+```text
+Packages/BachTypewriter-arm64.dmg
+```
+
+Open the DMG, drag `BachTypewriter.app` into Applications, then launch it from Applications. The current build is ad-hoc signed and not notarized, so macOS may require right-clicking the app and choosing Open on first launch.
+
+最新的 Apple Silicon 分享版在：
+
+```text
+Packages/BachTypewriter-arm64.dmg
+```
+
+打开 DMG，把 `BachTypewriter.app` 拖进“应用程序”，再从“应用程序”里启动。当前版本是 ad-hoc 签名，还没有 Apple 公证，所以首次打开时 macOS 可能需要右键 App 选择“打开”。
 
 ## Features / 功能
 
