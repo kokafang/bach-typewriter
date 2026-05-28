@@ -70,6 +70,20 @@ Enable Bach Typewriter, then restart the app.
 
 勾选 Bach Typewriter，然后重新启动 App。
 
+## Package / 打包
+
+```bash
+./scripts/package-dmg.sh
+```
+
+This builds the release app, copies the SwiftPM resource bundle into `Contents/Resources`, signs the preview app ad-hoc, creates `Packages/BachTypewriter-arm64.dmg`, and verifies the DMG.
+
+该脚本会构建 release 版本，把 SwiftPM 资源包复制到 `Contents/Resources`，对预览 App 做 ad-hoc 签名，生成并校验 `Packages/BachTypewriter-arm64.dmg`。
+
+The current package is Apple Silicon only and is not notarized. On another Mac, first launch may require right-clicking the app and choosing Open. If the app is replaced or re-signed, macOS may require Accessibility and Input Monitoring permissions to be granted again.
+
+当前包仅支持 Apple Silicon，且还没有 Apple 公证。朋友电脑上首次打开可能需要右键 App 选择“打开”。如果替换或重新签名 App，macOS 可能需要重新授权辅助功能和输入监控权限。
+
 ## Open in Xcode / 在 Xcode 中打开
 
 This repository is a Swift package, so you can open the package folder directly in Xcode.

@@ -57,7 +57,6 @@ final class SoundEngine {
 
     var isEnabled = true
     var instrument: Instrument = .celesta
-    private let fallbackSoundRoot = "/Users/jiafenggao/Documents/Obsidian/jiafeng-vault-air/bach-typewriter-swift/Sources/bach-typewriter-swift/Resources/Sounds"
     private var helperProcess: Process?
     private var helperInput: Pipe?
 
@@ -68,11 +67,13 @@ final class SoundEngine {
         }
 
         let fallbackResourceName = instrument.fallbackResourceName(for: note)
-        let soundURL = Bundle.module.url(
+        guard let soundURL = AppResources.url(
             forResource: fallbackResourceName,
             withExtension: "wav",
             subdirectory: "Sounds"
-        ) ?? URL(fileURLWithPath: "\(fallbackSoundRoot)/\(fallbackResourceName).wav")
+        ) else {
+            return
+        }
 
         let process = Process()
         process.executableURL = URL(fileURLWithPath: "/usr/bin/afplay")
@@ -142,7 +143,13 @@ final class SoundEngine {
             return appHelper
         }
 
-        let devHelper = URL(fileURLWithPath: "/Users/jiafenggao/Documents/Obsidian/jiafeng-vault-air/bach-typewriter-swift/.build/arm64-apple-macosx/debug/BachAudioHelper")
+        guard let executableURL = Bundle.main.executableURL else {
+            return nil
+        }
+
+        let devHelper = executableURL
+            .deletingLastPathComponent()
+            .appendingPathComponent("BachAudioHelper")
         if FileManager.default.isExecutableFile(atPath: devHelper.path) {
             return devHelper
         }
@@ -151,13 +158,6 @@ final class SoundEngine {
     }
 
     private func soundRootURL() -> URL {
-        if let g4URL = Bundle.module.url(
-            forResource: "G4",
-            withExtension: "wav",
-            subdirectory: "Sounds"
-        ) {
-            return g4URL.deletingLastPathComponent()
-        }
-        return URL(fileURLWithPath: fallbackSoundRoot)
+        AppResources.directory(subdirectory: "Sounds")
     }
 }

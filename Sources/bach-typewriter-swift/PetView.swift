@@ -143,7 +143,7 @@ final class PetView: NSView {
 
     private func loadFrames() {
         guard
-            let url = Bundle.module.url(forResource: "spritesheet", withExtension: "png"),
+            let url = AppResources.url(forResource: "spritesheet", withExtension: "png"),
             let source = NSImage(contentsOf: url),
             let cgImage = source.cgImage(forProposedRect: nil, context: nil, hints: nil)
         else {

@@ -12,12 +12,12 @@ enum GoldbergLibrary {
     }
 
     static func loadTracks() -> [MelodyTrack] {
-        let nestedURL = Bundle.module.url(
+        let nestedURL = AppResources.url(
             forResource: "GoldbergLibrary",
             withExtension: "json",
             subdirectory: "Library"
         )
-        let flatURL = Bundle.module.url(forResource: "GoldbergLibrary", withExtension: "json")
+        let flatURL = AppResources.url(forResource: "GoldbergLibrary", withExtension: "json")
 
         guard let url = nestedURL ?? flatURL else {
             print("Bach melody library missing: GoldbergLibrary.json")
