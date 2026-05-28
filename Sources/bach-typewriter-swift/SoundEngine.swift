@@ -71,6 +71,9 @@ final class SoundEngine {
             forResource: fallbackResourceName,
             withExtension: "wav",
             subdirectory: "Sounds"
+        ) ?? AppResources.url(
+            forResource: fallbackResourceName,
+            withExtension: "wav"
         ) else {
             return
         }
@@ -158,6 +161,22 @@ final class SoundEngine {
     }
 
     private func soundRootURL() -> URL {
-        AppResources.directory(subdirectory: "Sounds")
+        let soundDirectory = AppResources.directory(subdirectory: "Sounds")
+        if directoryContainsWAV(soundDirectory) {
+            return soundDirectory
+        }
+
+        return AppResources.directory()
+    }
+
+    private func directoryContainsWAV(_ url: URL) -> Bool {
+        guard let files = try? FileManager.default.contentsOfDirectory(
+            at: url,
+            includingPropertiesForKeys: nil
+        ) else {
+            return false
+        }
+
+        return files.contains { $0.pathExtension.lowercased() == "wav" }
     }
 }

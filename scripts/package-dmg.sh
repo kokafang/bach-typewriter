@@ -23,6 +23,7 @@ cp -R "$BUILD_DIR/$BUNDLE_NAME" "$RESOURCES/"
 xattr -cr "$APP"
 codesign --force --deep --sign - "$APP"
 codesign --verify --deep --strict --verbose=2 "$APP"
+printf 'quit\n' | BACH_SOUND_ROOT="$RESOURCES/$BUNDLE_NAME" "$APP/Contents/MacOS/BachAudioHelper" | grep -q "BachAudioHelper ready"
 
 rm -f "$ZIP"
 ditto -c -k --keepParent "$APP" "$ZIP"
