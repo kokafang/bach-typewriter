@@ -6,75 +6,187 @@
 	<dict>
 		<key>Resources/bach-typewriter-swift_bach-typewriter-swift.bundle/A3.wav</key>
 		<data>
-		ZRJabgTthQWMYrpnSPeCEVDdFNQ=
+		hp1jevlhqPra3I/tmMeTGViDGcM=
 		</data>
 		<key>Resources/bach-typewriter-swift_bach-typewriter-swift.bundle/A4.wav</key>
 		<data>
-		Y8z5Gs0FkgnIhNJnVDmqtk6vul0=
+		lXiQ9IARmxaeWjvdTaAut5NFCWg=
 		</data>
 		<key>Resources/bach-typewriter-swift_bach-typewriter-swift.bundle/A5.wav</key>
 		<data>
-		PkVq3bRGaDxCX2/xHtxlw34brXI=
+		ER9bRK3flYxy3049rEvkP/OKoSM=
+		</data>
+		<key>Resources/bach-typewriter-swift_bach-typewriter-swift.bundle/Asharp3.wav</key>
+		<data>
+		LBys7TtD4DHVacCsaDayFn66KDk=
+		</data>
+		<key>Resources/bach-typewriter-swift_bach-typewriter-swift.bundle/Asharp4.wav</key>
+		<data>
+		QZKFHT8DQ0uv3EIdmUF4opkjLQM=
+		</data>
+		<key>Resources/bach-typewriter-swift_bach-typewriter-swift.bundle/Asharp5.wav</key>
+		<data>
+		Wb0BXCgqVQqnNe+wFmUiGvFVMU4=
+		</data>
+		<key>Resources/bach-typewriter-swift_bach-typewriter-swift.bundle/B3.wav</key>
+		<data>
+		MYnjcBPiOdJvqjm5ymCX5NPGUI8=
 		</data>
 		<key>Resources/bach-typewriter-swift_bach-typewriter-swift.bundle/B4.wav</key>
 		<data>
-		BksdTY1pLzeEBgZRgdgg8yL4CgM=
+		kXHY0SuQNGtyzvzvs/wtdSnLZDo=
 		</data>
 		<key>Resources/bach-typewriter-swift_bach-typewriter-swift.bundle/B5.wav</key>
 		<data>
-		J1ZRbP4uPpR1A68JPJpKtQzvK08=
+		kbljIqam65Zw3tjR+M4+uajb3nQ=
+		</data>
+		<key>Resources/bach-typewriter-swift_bach-typewriter-swift.bundle/C3.wav</key>
+		<data>
+		s1dTMpuJ1EpMhGZadu/ozslFi18=
+		</data>
+		<key>Resources/bach-typewriter-swift_bach-typewriter-swift.bundle/C4.wav</key>
+		<data>
+		I+FmhP5+K2HEzT48rPtZJVs+4So=
 		</data>
 		<key>Resources/bach-typewriter-swift_bach-typewriter-swift.bundle/C5.wav</key>
 		<data>
-		/vVftZvtIOCguhozPe+MuAvzmt8=
+		zuclnjfMW10vRtnHpx4NW6JEleI=
+		</data>
+		<key>Resources/bach-typewriter-swift_bach-typewriter-swift.bundle/C6.wav</key>
+		<data>
+		/b1J/GF3eNNYQRpSSXqAqBjRO+g=
+		</data>
+		<key>Resources/bach-typewriter-swift_bach-typewriter-swift.bundle/Csharp3.wav</key>
+		<data>
+		g9SPBpmrLWrAohDbJYz/c48LvSU=
 		</data>
 		<key>Resources/bach-typewriter-swift_bach-typewriter-swift.bundle/Csharp4.wav</key>
 		<data>
-		Yog5+95noebiscASYw3RCJicgn8=
+		EspqjOGLFIaT0Xx7Ltgt6W673GM=
 		</data>
 		<key>Resources/bach-typewriter-swift_bach-typewriter-swift.bundle/Csharp5.wav</key>
 		<data>
-		PavlZ6X8GIWRRDm/8TU5hoeS/6I=
+		3SOprqZhHwaWWbw9tsHVxC90YcI=
+		</data>
+		<key>Resources/bach-typewriter-swift_bach-typewriter-swift.bundle/Csharp6.wav</key>
+		<data>
+		mGYnfoy8yy74NCVGWUdvhL2jCaY=
+		</data>
+		<key>Resources/bach-typewriter-swift_bach-typewriter-swift.bundle/D3.wav</key>
+		<data>
+		Swm4SV9CVuio58S4ZgHvkcseVUg=
 		</data>
 		<key>Resources/bach-typewriter-swift_bach-typewriter-swift.bundle/D4.wav</key>
 		<data>
-		rmEX2WCJnM2EfJRanM+G8tSZQ5Q=
+		Ri+SyVXwqCo4jalFmDPVvJKK3lU=
 		</data>
 		<key>Resources/bach-typewriter-swift_bach-typewriter-swift.bundle/D5.wav</key>
 		<data>
-		tj79EGV4G/SR+g4idz1uW1xjctI=
+		anpusE3Iypji/HZQ5XKbzj1IlDc=
 		</data>
 		<key>Resources/bach-typewriter-swift_bach-typewriter-swift.bundle/D6.wav</key>
 		<data>
-		LE/UggMlXuYeZy+/wKeXyhD42N0=
+		mniBUT7l98SPbROJRzWT1aXXIfw=
+		</data>
+		<key>Resources/bach-typewriter-swift_bach-typewriter-swift.bundle/Dsharp3.wav</key>
+		<data>
+		6gG0G791aV/COLd3QdHTvdCEUF8=
+		</data>
+		<key>Resources/bach-typewriter-swift_bach-typewriter-swift.bundle/Dsharp4.wav</key>
+		<data>
+		9V0qVyXoiyAqSlNhLfVD3gdhDh8=
+		</data>
+		<key>Resources/bach-typewriter-swift_bach-typewriter-swift.bundle/Dsharp5.wav</key>
+		<data>
+		aTnvbh8LWD2jsuraIiWdMvF0T4Q=
+		</data>
+		<key>Resources/bach-typewriter-swift_bach-typewriter-swift.bundle/Dsharp6.wav</key>
+		<data>
+		zeumzkgcAOzUroZnmofRdPHxzO8=
+		</data>
+		<key>Resources/bach-typewriter-swift_bach-typewriter-swift.bundle/E3.wav</key>
+		<data>
+		gg2Z+j+IBPs5QguTAE877vPTKgA=
 		</data>
 		<key>Resources/bach-typewriter-swift_bach-typewriter-swift.bundle/E4.wav</key>
 		<data>
-		HvSjjru7t8gMj5k0pjx75tj1YLM=
+		IXBu+LsrGSUKIenD9qgPoEqrdFo=
 		</data>
 		<key>Resources/bach-typewriter-swift_bach-typewriter-swift.bundle/E5.wav</key>
 		<data>
-		piRKHIcNdye6iVrKuhAeiZd5d0Q=
+		8sdGbPH0h9VMT/bPCqa30f7DSJQ=
+		</data>
+		<key>Resources/bach-typewriter-swift_bach-typewriter-swift.bundle/E6.wav</key>
+		<data>
+		LkvWD6A+5evsWvrV8irZhrngSlE=
+		</data>
+		<key>Resources/bach-typewriter-swift_bach-typewriter-swift.bundle/F3.wav</key>
+		<data>
+		lQyNDXteT4ulrl5s5mDflLRjXC8=
+		</data>
+		<key>Resources/bach-typewriter-swift_bach-typewriter-swift.bundle/F4.wav</key>
+		<data>
+		Xbp6JPcmKGFT2eVjn50GD1RS0FY=
+		</data>
+		<key>Resources/bach-typewriter-swift_bach-typewriter-swift.bundle/F5.wav</key>
+		<data>
+		e+akic8wPMSl8/5x63kHCxlsJkM=
+		</data>
+		<key>Resources/bach-typewriter-swift_bach-typewriter-swift.bundle/F6.wav</key>
+		<data>
+		l41bci9a8SxSXt06TE6+dFlsu8g=
+		</data>
+		<key>Resources/bach-typewriter-swift_bach-typewriter-swift.bundle/Fsharp3.wav</key>
+		<data>
+		tUF+mVy7V51sM3/GIX3z/z9aqF8=
 		</data>
 		<key>Resources/bach-typewriter-swift_bach-typewriter-swift.bundle/Fsharp4.wav</key>
 		<data>
-		UYKQnyga4UknU33CRGnM5s9bxso=
+		9/UtR4RocmFd8GHHQ2LzCOmabM8=
 		</data>
 		<key>Resources/bach-typewriter-swift_bach-typewriter-swift.bundle/Fsharp5.wav</key>
 		<data>
-		8H170sWQVcy2qur7+C05xsE6zFk=
+		t1hQj9yHYNyzlxf8mcXF/KmlYNs=
 		</data>
 		<key>Resources/bach-typewriter-swift_bach-typewriter-swift.bundle/Fsharp6.wav</key>
 		<data>
-		aG6lzE7r538pgUHcgAguPd02ank=
+		544xPhRrrWpdVDKPnaM89HKKXpA=
+		</data>
+		<key>Resources/bach-typewriter-swift_bach-typewriter-swift.bundle/G3.wav</key>
+		<data>
+		g8MFTDSgk5C0iklCwqLT4l+Y8+I=
 		</data>
 		<key>Resources/bach-typewriter-swift_bach-typewriter-swift.bundle/G4.wav</key>
 		<data>
-		bwLy0Klc/AVgRIvJwopX8nAEOdY=
+		sohq9EfQMz812pFNB4qngOereV4=
 		</data>
 		<key>Resources/bach-typewriter-swift_bach-typewriter-swift.bundle/G5.wav</key>
 		<data>
-		qWYfo7hvTKX2EpaNzz/CLoA3dSA=
+		pgXdKY4eTNFFn2UTPcDGVJSwoP4=
+		</data>
+		<key>Resources/bach-typewriter-swift_bach-typewriter-swift.bundle/GoldbergAttribution.txt</key>
+		<data>
+		qeZxruGZViKb8aoUsODNFEvwiqg=
+		</data>
+		<key>Resources/bach-typewriter-swift_bach-typewriter-swift.bundle/GoldbergLibrary.json</key>
+		<data>
+		I962n+Thp75VmrV4b9VSIa1TbyA=
+		</data>
+		<key>Resources/bach-typewriter-swift_bach-typewriter-swift.bundle/Gsharp3.wav</key>
+		<data>
+		Wejai0G2t+lGmw0OYGP/KmQfrZM=
+		</data>
+		<key>Resources/bach-typewriter-swift_bach-typewriter-swift.bundle/Gsharp4.wav</key>
+		<data>
+		Bgsc5ZNq9DqeufXgCfupYDzPFjM=
+		</data>
+		<key>Resources/bach-typewriter-swift_bach-typewriter-swift.bundle/Gsharp5.wav</key>
+		<data>
+		2OIiLS7DVMAAsHVsENV7v9cN2GI=
+		</data>
+		<key>Resources/bach-typewriter-swift_bach-typewriter-swift.bundle/nya.wav</key>
+		<data>
+		aPmmdGzuB9Ae9hp/o8BzdczHYAk=
 		</data>
 		<key>Resources/bach-typewriter-swift_bach-typewriter-swift.bundle/obvious-test-tone.wav</key>
 		<data>
@@ -91,135 +203,331 @@
 		<dict>
 			<key>cdhash</key>
 			<data>
-			eMmZbiD48jAe6vudC1+Lf59sOms=
+			BiYZv3AwtIPCAHDdw9bAlyv55Ts=
 			</data>
 			<key>requirement</key>
-			<string>cdhash H"78c9996e20f8f2301eeafb9d0b5f8b7f9f6c3a6b"</string>
+			<string>cdhash H"062619bf7030b483c20070ddc3d6c0972bf9e53b"</string>
 		</dict>
 		<key>Resources/bach-typewriter-swift_bach-typewriter-swift.bundle/A3.wav</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			KhYP3skuTpv16EjSgReFgdX+u78jjizXN5iB/s5r/Xs=
+			8B1sxqiRiFC6qjC8S+Q83NbTHgrGo2rel4rH+VOKqsQ=
 			</data>
 		</dict>
 		<key>Resources/bach-typewriter-swift_bach-typewriter-swift.bundle/A4.wav</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			rXrupa0f8A8JMhr6Cs3iJ7Aj5YmzDQYhMuSVvxFLbT0=
+			Bq200M/uSupRb+l9dw3rG+AJOAb0/L4YLkvqZAe6/4A=
 			</data>
 		</dict>
 		<key>Resources/bach-typewriter-swift_bach-typewriter-swift.bundle/A5.wav</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			2qUJBKj/zzxq0PZA13RA16AYi+KQlEWP3Z3ZhlIlv6o=
+			KL688XRDLcttOZ2+1lukmqgZbDUfhcrMMSwJZcheCKs=
+			</data>
+		</dict>
+		<key>Resources/bach-typewriter-swift_bach-typewriter-swift.bundle/Asharp3.wav</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			HFd7N722a+0UsyHoeVsvZ0PRqUwXv6jhZBLALI0e5Nw=
+			</data>
+		</dict>
+		<key>Resources/bach-typewriter-swift_bach-typewriter-swift.bundle/Asharp4.wav</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			EV/OVQHmmiT+64r7UUCR7HC+mNtMgYWSLu4rRLnL3mE=
+			</data>
+		</dict>
+		<key>Resources/bach-typewriter-swift_bach-typewriter-swift.bundle/Asharp5.wav</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			IwTdT/tkZfDsjTfp+m6bInNjD0UCQ+wUW/o/N1a3phc=
+			</data>
+		</dict>
+		<key>Resources/bach-typewriter-swift_bach-typewriter-swift.bundle/B3.wav</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			hsIjYojYyoFC76UvLY1JEywcfLzNG9oJ3j4K1nLM+eU=
 			</data>
 		</dict>
 		<key>Resources/bach-typewriter-swift_bach-typewriter-swift.bundle/B4.wav</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			ndtoohT5Odeh6Oiih668FhxvywpEEBmCQv5Mlwozmpg=
+			AEtd2GhRFJnH9vsgBnhH5hqZfGeUBNIiTDLZENy9Naw=
 			</data>
 		</dict>
 		<key>Resources/bach-typewriter-swift_bach-typewriter-swift.bundle/B5.wav</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			F5VK8UY2L4k0yH2ILtOa+apuB032TFeZBVFojsBvTwI=
+			mB54604NJ06kvzuNSW1mSRBnGsG6KFVR05z0UsFNB40=
+			</data>
+		</dict>
+		<key>Resources/bach-typewriter-swift_bach-typewriter-swift.bundle/C3.wav</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			wIk4QV6pXjPhbEA2okQUpH/GuelUWxM9kyiwhjKGVTY=
+			</data>
+		</dict>
+		<key>Resources/bach-typewriter-swift_bach-typewriter-swift.bundle/C4.wav</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			GxuwyJPvfPtjkoJXekr3cshWfP9gigmSN5L3S77S2Sg=
 			</data>
 		</dict>
 		<key>Resources/bach-typewriter-swift_bach-typewriter-swift.bundle/C5.wav</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			2SjCdrTUyKHiNXpoDMWDvRB8l7EXR9qqbBbBb8sr4wA=
+			Xu08sJjIY6Nslx1uuYUTuSkiChw5V+qx7T9S5fa9nfU=
+			</data>
+		</dict>
+		<key>Resources/bach-typewriter-swift_bach-typewriter-swift.bundle/C6.wav</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			FKhWmD0tv6AJLEdNo2o7i4b1sRHZ9NogOWKud/2xDnc=
+			</data>
+		</dict>
+		<key>Resources/bach-typewriter-swift_bach-typewriter-swift.bundle/Csharp3.wav</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			Bpvktw5yRGw1lFLXkktk0DTXjFN/dJKWztUkpdkaON0=
 			</data>
 		</dict>
 		<key>Resources/bach-typewriter-swift_bach-typewriter-swift.bundle/Csharp4.wav</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			57UEwxIHYDTOVu4SuVjEsQQljOCm/s3m/78S0nqtvv8=
+			4gSidaeZq0h75tAlxz4XPLRqxyBRdUZYBhVmbU4oKRo=
 			</data>
 		</dict>
 		<key>Resources/bach-typewriter-swift_bach-typewriter-swift.bundle/Csharp5.wav</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			qOQYUlVKj8BnrdSH5aoOlnWngwOToeKwlo0d7paiWjM=
+			xXxy2l36Gyx7eC56BMdrLbRMKedmzxcy7gfbLs8GvEo=
+			</data>
+		</dict>
+		<key>Resources/bach-typewriter-swift_bach-typewriter-swift.bundle/Csharp6.wav</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			/OKxaFaFx20KN6SF7ylw9uuhbLyz391RVDd16AwpsQU=
+			</data>
+		</dict>
+		<key>Resources/bach-typewriter-swift_bach-typewriter-swift.bundle/D3.wav</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			jJkBXjEeK7sXkCrMET5igxSCfiKIVIJJfdYUiOagqsA=
 			</data>
 		</dict>
 		<key>Resources/bach-typewriter-swift_bach-typewriter-swift.bundle/D4.wav</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			BdaQAQvJp5hIloMaAEc7BMFCxFnsLl4Pzq4Pal7gZlU=
+			rTPOyR0IEpMo4q/tb1tR5303IYMx69HOwrytilMhz4M=
 			</data>
 		</dict>
 		<key>Resources/bach-typewriter-swift_bach-typewriter-swift.bundle/D5.wav</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			mOXDkDBS5lkxFHzTc/MTGEEaUFqrJXrwgR9nNhJQo8Q=
+			2ErjlFn6Z4nFTRk4AX8inYjSxBnUcz/izNOrIcWSnh4=
 			</data>
 		</dict>
 		<key>Resources/bach-typewriter-swift_bach-typewriter-swift.bundle/D6.wav</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			9wGwLS9QAVwVo+WscZR2eC1H6wsAAXS7UioLdC+yc50=
+			aLcJ012metas9avhCj6cn0j/cu2YijJm34al5Rg6FzE=
+			</data>
+		</dict>
+		<key>Resources/bach-typewriter-swift_bach-typewriter-swift.bundle/Dsharp3.wav</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			qyeAAht2mRW6CeB1InLRA+ciU4zkLfbp6UqGffW4u7A=
+			</data>
+		</dict>
+		<key>Resources/bach-typewriter-swift_bach-typewriter-swift.bundle/Dsharp4.wav</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			hLwCA5aNJSj0v5UP4tq2aW0u5k4D7iu3wItC1r1Cxqo=
+			</data>
+		</dict>
+		<key>Resources/bach-typewriter-swift_bach-typewriter-swift.bundle/Dsharp5.wav</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			zmI8X1svWt6jAO4p3jZLvS9yrCJcoPyErZNVj9+7ejg=
+			</data>
+		</dict>
+		<key>Resources/bach-typewriter-swift_bach-typewriter-swift.bundle/Dsharp6.wav</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			jAyNpTq8I5ssKTrc2AkY9QEXwZetqmBCpjh5N6eeBAw=
+			</data>
+		</dict>
+		<key>Resources/bach-typewriter-swift_bach-typewriter-swift.bundle/E3.wav</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			oPt+S/kZKlMLdOIQumi90+49HTdjcG7K6rwggTZlnK4=
 			</data>
 		</dict>
 		<key>Resources/bach-typewriter-swift_bach-typewriter-swift.bundle/E4.wav</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			doI5Xp4bSmbq5ww6OVlC1Dfz8a5Thy7w1NF4w8Notes=
+			I0CSu5sNAQcMEmMw5Uy49na9uKEfFXv9CSFoEu4bwgw=
 			</data>
 		</dict>
 		<key>Resources/bach-typewriter-swift_bach-typewriter-swift.bundle/E5.wav</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			OjohYlLXBeERE6e54eIJZl+ckmE0CRNwC9mTg6TI/eg=
+			MN2iAAPrbUy7YeebD+p7MtQT8rnb/HV8Mx4B5NOOAoY=
+			</data>
+		</dict>
+		<key>Resources/bach-typewriter-swift_bach-typewriter-swift.bundle/E6.wav</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			8scV6Em/6M+dEf2JjTZgLHEdM/tZSUSSzcKv2trtlYI=
+			</data>
+		</dict>
+		<key>Resources/bach-typewriter-swift_bach-typewriter-swift.bundle/F3.wav</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			kSsQCtad+vL7xmp5TVAjdpW3ZoFtDaoAi0oVIB5Ju3U=
+			</data>
+		</dict>
+		<key>Resources/bach-typewriter-swift_bach-typewriter-swift.bundle/F4.wav</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			ed3oDwVj6LpkLPRDyZbRUIv9IB1qV0WZek9L2usHOcM=
+			</data>
+		</dict>
+		<key>Resources/bach-typewriter-swift_bach-typewriter-swift.bundle/F5.wav</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			qMzZicVisLLPVh2IvvLPV8fSSLNI7+EKr/cxRIIfdEs=
+			</data>
+		</dict>
+		<key>Resources/bach-typewriter-swift_bach-typewriter-swift.bundle/F6.wav</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			vIQb1N+TVPSm9EaxTtFoas33sbAnINVQkzGzxaedmpk=
+			</data>
+		</dict>
+		<key>Resources/bach-typewriter-swift_bach-typewriter-swift.bundle/Fsharp3.wav</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			b70TOQ1phSmv/YaupHejxaGQIuLmVQkehLhEjGDz5i4=
 			</data>
 		</dict>
 		<key>Resources/bach-typewriter-swift_bach-typewriter-swift.bundle/Fsharp4.wav</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			nluqP5lbdp3Usw/W+wg1jyrA1J4yMcPBuT8rRTOq3kE=
+			TrI6u78ck2/7IXke2de0yy/UwGg6xJOmDPPozCQWf+I=
 			</data>
 		</dict>
 		<key>Resources/bach-typewriter-swift_bach-typewriter-swift.bundle/Fsharp5.wav</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			jNsydZ02hj23DNj4yhEWMhOG0tEN3wKb1kB+iJkU0KA=
+			dcOMyVrWw+qdDW7b8tsBgaJiRygH98WZ8iDocQd5kdc=
 			</data>
 		</dict>
 		<key>Resources/bach-typewriter-swift_bach-typewriter-swift.bundle/Fsharp6.wav</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			iHi4dPW1wnCjpC3Y1xm9/FNJVWIA85pFZ3HyEZ0qEUg=
+			usTvxswjfm3f9m75J1y7SX0GEXc2DDxJEqiE3YI1k+8=
+			</data>
+		</dict>
+		<key>Resources/bach-typewriter-swift_bach-typewriter-swift.bundle/G3.wav</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			0ILg/VauWVYeTFYv14k8XHCNh3msHJW92CCL4nBMiKM=
 			</data>
 		</dict>
 		<key>Resources/bach-typewriter-swift_bach-typewriter-swift.bundle/G4.wav</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			TuXTAJkIi2KXZB+myVFq3lZK/qSmX3nJEBuMYT9uTBs=
+			CBaPBiOihixxar9QysnRFizOk9DTsmHTGIDBIXA7M8I=
 			</data>
 		</dict>
 		<key>Resources/bach-typewriter-swift_bach-typewriter-swift.bundle/G5.wav</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			eq9vwAUXpQBbfycTxpHyE6RoQsct4dEyGI9dv3ihyxo=
+			VkCMgsujksKxs0R7TuvVSJJ8+UUEcFuNa7ML1owoGS0=
+			</data>
+		</dict>
+		<key>Resources/bach-typewriter-swift_bach-typewriter-swift.bundle/GoldbergAttribution.txt</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			SuwfTP5SvgOpVTvAKbFN/KBSNBshk8E2MqVvfB1SyBE=
+			</data>
+		</dict>
+		<key>Resources/bach-typewriter-swift_bach-typewriter-swift.bundle/GoldbergLibrary.json</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			W5fP1dJKZFXsP9af9xM1q5FoTfoN3murUkc5LuBD0E8=
+			</data>
+		</dict>
+		<key>Resources/bach-typewriter-swift_bach-typewriter-swift.bundle/Gsharp3.wav</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			F2cVrsZ03AQhJymmIVyvWEQn0Aru0gs/ikj2ogvsvEo=
+			</data>
+		</dict>
+		<key>Resources/bach-typewriter-swift_bach-typewriter-swift.bundle/Gsharp4.wav</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			e9TQj2aoAYAja99Qlug3WLWLnnsq+/0WD6ZpOzy2Eq4=
+			</data>
+		</dict>
+		<key>Resources/bach-typewriter-swift_bach-typewriter-swift.bundle/Gsharp5.wav</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			pn73f+zPrxT7DJ7yVDuUJvB+Zf4vKjc9LqvoSj4en1Y=
+			</data>
+		</dict>
+		<key>Resources/bach-typewriter-swift_bach-typewriter-swift.bundle/nya.wav</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			0+29xVoR/ssxQin4O5J9RBcK9wcfcMWpLwcspRMHMBw=
 			</data>
 		</dict>
 		<key>Resources/bach-typewriter-swift_bach-typewriter-swift.bundle/obvious-test-tone.wav</key>

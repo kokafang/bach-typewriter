@@ -9,36 +9,45 @@ struct Note {
     }
 }
 
-final class MelodyPlayer {
-    private var index = 0
+struct MelodyTrack {
+    let id: String
+    let title: String
+    let notes: [Note]
+}
 
-    private let notes: [Note] = [
-        "G4", "F#4", "G4", "D4", "E4", "F#4", "G4", "A4", "B4", "C#5",
-        "D5", "C#5", "D5", "A4", "B4", "C#5", "D5", "E5", "F#5", "D5",
-        "G5", "F#5", "E5", "D5", "C#5", "E5", "A4", "G4",
-        "F#4", "E4", "D4", "C#4", "D4", "F#4", "A4", "G4", "F#4", "A4", "D4",
-        "D5", "C5", "D5", "G5", "B5", "D5",
-        "E5", "D5", "E5", "A5", "C5", "E5",
-        "F#5", "E5", "F#5", "D5", "A5", "C5",
-        "C5", "B4", "G4", "B4", "D5", "G5", "D5", "G5", "A5",
-        "B5", "G5", "D5", "B4", "G4", "B4", "D5", "G5", "B5", "G5", "F#5", "E5",
-        "A5", "E5", "C#5", "A4", "F#4", "A4", "C#5", "E5", "A5", "F#5", "E5", "D5",
-        "G5", "D5", "B4", "G4", "E4", "G4", "B4", "D5", "G5", "F#5", "E5", "D5",
-        "C#5", "G4", "E4", "C#4", "A3", "C#4", "E4", "G4", "C#5", "E5", "D5", "C#5",
-        "D5", "F#5", "A5", "D6", "F#6",
-        "B4", "G4", "B4", "E5", "G5",
-        "C#5", "E5", "A4", "G4", "F#4", "A4", "D5", "F#5", "G5", "E5", "D5", "C#5",
-        "F#5", "D5", "C#5", "B4", "A4", "G4", "F#4", "E4", "D4"
-    ].compactMap(Note.init(name:))
+final class MelodyPlayer {
+    private static let defaultTrackID = "goldberg-var-01"
+
+    private var index = 0
+    private(set) var selectedTrack: MelodyTrack
+    let tracks: [MelodyTrack]
+
+    init() {
+        let libraryTracks = GoldbergLibrary.loadTracks()
+        tracks = libraryTracks
+        selectedTrack = libraryTracks.first(where: { $0.id == Self.defaultTrackID })
+            ?? libraryTracks.first
+            ?? MelodyTrack(
+                id: Self.defaultTrackID,
+                title: "Goldberg Variation 1",
+                notes: ["G4"].compactMap(Note.init(name:))
+            )
+    }
 
     func next() -> Note {
-        let note = notes[index % notes.count]
+        let note = selectedTrack.notes[index % selectedTrack.notes.count]
         index += 1
         return note
     }
+
+    func selectTrack(id: String) {
+        guard let track = tracks.first(where: { $0.id == id }) else { return }
+        selectedTrack = track
+        index = 0
+    }
 }
 
-private extension Note {
+extension Note {
     init?(name: String) {
         let pitchNames = [
             "C": 0, "C#": 1, "D": 2, "D#": 3, "E": 4, "F": 5,

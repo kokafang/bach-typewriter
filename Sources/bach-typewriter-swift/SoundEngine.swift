@@ -2,11 +2,12 @@ import Foundation
 
 final class SoundEngine {
     enum Instrument: Int, CaseIterable {
-        case sampleHarpsichord
-        case piano
-        case celesta
-        case harpsichord
-        case churchOrgan
+        case celesta = 2
+        case nyaSample = 5
+        case harpsichord = 3
+        case churchOrgan = 4
+        case piano = 1
+        case sampleHarpsichord = 0
 
         var menuTitle: String {
             switch self {
@@ -15,23 +16,47 @@ final class SoundEngine {
             case .celesta: return "Celesta (GM)"
             case .harpsichord: return "Harpsichord (GM)"
             case .churchOrgan: return "Church Organ (GM)"
+            case .nyaSample: return "Nya (Sample)"
             }
         }
 
         var usesSamplePlayer: Bool {
-            self == .sampleHarpsichord
+            switch self {
+            case .sampleHarpsichord, .nyaSample: return true
+            case .piano, .celesta, .harpsichord, .churchOrgan: return false
+            }
+        }
+
+        func sampleResourceName(for note: Note) -> String {
+            switch self {
+            case .sampleHarpsichord: return note.resourceName
+            case .nyaSample: return note.resourceName
+            case .piano, .celesta, .harpsichord, .churchOrgan: return note.name
+            }
+        }
+
+        func fallbackResourceName(for note: Note) -> String {
+            switch self {
+            case .nyaSample: return "nya"
+            case .sampleHarpsichord, .piano, .celesta, .harpsichord, .churchOrgan:
+                return note.resourceName
+            }
         }
 
         var helperCommandValue: String {
-            if usesSamplePlayer {
+            switch self {
+            case .sampleHarpsichord:
                 return "sample"
+            case .nyaSample:
+                return "sample-pitched:nya:G4"
+            case .piano, .celesta, .harpsichord, .churchOrgan:
+                return "gm:\(rawValue)"
             }
-            return "gm:\(rawValue)"
         }
     }
 
     var isEnabled = true
-    var instrument: Instrument = .sampleHarpsichord
+    var instrument: Instrument = .celesta
     private let fallbackSoundRoot = "/Users/jiafenggao/Documents/Obsidian/jiafeng-vault-air/bach-typewriter-swift/Sources/bach-typewriter-swift/Resources/Sounds"
     private var helperProcess: Process?
     private var helperInput: Pipe?
@@ -42,11 +67,12 @@ final class SoundEngine {
             return
         }
 
+        let fallbackResourceName = instrument.fallbackResourceName(for: note)
         let soundURL = Bundle.module.url(
-            forResource: note.resourceName,
+            forResource: fallbackResourceName,
             withExtension: "wav",
             subdirectory: "Sounds"
-        ) ?? URL(fileURLWithPath: "\(fallbackSoundRoot)/\(note.resourceName).wav")
+        ) ?? URL(fileURLWithPath: "\(fallbackSoundRoot)/\(fallbackResourceName).wav")
 
         let process = Process()
         process.executableURL = URL(fileURLWithPath: "/usr/bin/afplay")
@@ -62,7 +88,7 @@ final class SoundEngine {
         guard startHelperIfNeeded() else { return false }
         guard let input = helperInput else { return false }
 
-        let noteValue = instrument.usesSamplePlayer ? note.resourceName : note.name
+        let noteValue = instrument.usesSamplePlayer ? instrument.sampleResourceName(for: note) : note.name
         let line = "\(instrument.helperCommandValue)|\(noteValue)\n"
         guard let data = line.data(using: .utf8) else { return false }
 

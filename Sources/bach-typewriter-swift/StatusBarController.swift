@@ -12,15 +12,20 @@ final class StatusBarController {
     private let signalItem = NSMenuItem()
     private let instrumentMenuItem = NSMenuItem(title: "Instrument", action: nil, keyEquivalent: "")
     private let instrumentMenu = NSMenu()
+    private let melodyMenuItem = NSMenuItem(title: "Music Library", action: nil, keyEquivalent: "")
+    private let melodyMenu = NSMenu()
     private var instrumentItems: [Instrument: NSMenuItem] = [:]
+    private var melodyItems: [String: NSMenuItem] = [:]
 
     init(
+        melodyTracks: [MelodyTrack],
         onShow: @escaping () -> Void,
         onToggleTypingNotes: @escaping () -> Void,
         onPlayTestNote: @escaping () -> Void,
         onToggleSound: @escaping () -> Void,
         onOpenAccessibility: @escaping () -> Void,
         onSelectInstrument: @escaping (Instrument) -> Void,
+        onSelectMelody: @escaping (String) -> Void,
         onQuit: @escaping () -> Void
     ) {
         statusItem.button?.title = "Bach"
@@ -51,6 +56,11 @@ final class StatusBarController {
         menu.addItem(instrumentMenuItem)
         CallbackTarget.shared.onSelectInstrument = onSelectInstrument
         configureInstrumentMenu()
+
+        melodyMenuItem.submenu = melodyMenu
+        menu.addItem(melodyMenuItem)
+        CallbackTarget.shared.onSelectMelody = onSelectMelody
+        configureMelodyMenu(with: melodyTracks)
 
         menu.addItem(.separator())
         signalItem.title = "Last Key Signal: waiting"
@@ -95,6 +105,12 @@ final class StatusBarController {
         }
     }
 
+    func setSelectedMelody(id: String) {
+        for (candidate, item) in melodyItems {
+            item.state = candidate == id ? .on : .off
+        }
+    }
+
     private func configureInstrumentMenu() {
         for instrument in Instrument.allCases {
             let item = NSMenuItem(
@@ -108,6 +124,20 @@ final class StatusBarController {
             instrumentItems[instrument] = item
         }
     }
+
+    private func configureMelodyMenu(with tracks: [MelodyTrack]) {
+        for track in tracks {
+            let item = NSMenuItem(
+                title: track.title,
+                action: #selector(CallbackTarget.handleMelodySelection(_:)),
+                keyEquivalent: ""
+            )
+            item.target = CallbackTarget.shared
+            item.representedObject = track.id
+            melodyMenu.addItem(item)
+            melodyItems[track.id] = item
+        }
+    }
 }
 
 private final class CallbackTarget: NSObject {
@@ -119,6 +149,7 @@ private final class CallbackTarget: NSObject {
     var onToggleSound: (() -> Void)?
     var onOpenAccessibility: (() -> Void)?
     var onSelectInstrument: ((SoundEngine.Instrument) -> Void)?
+    var onSelectMelody: ((String) -> Void)?
     var onQuit: (() -> Void)?
 
     @objc func handleShow() { onShow?() }
@@ -129,6 +160,10 @@ private final class CallbackTarget: NSObject {
     @objc func handleInstrumentSelection(_ sender: NSMenuItem) {
         guard let instrument = SoundEngine.Instrument(rawValue: sender.tag) else { return }
         onSelectInstrument?(instrument)
+    }
+    @objc func handleMelodySelection(_ sender: NSMenuItem) {
+        guard let id = sender.representedObject as? String else { return }
+        onSelectMelody?(id)
     }
     @objc func handleQuit() { onQuit?() }
 }

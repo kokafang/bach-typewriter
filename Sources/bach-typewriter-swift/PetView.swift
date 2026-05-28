@@ -163,12 +163,17 @@ final class PetView: NSView {
                 let y = totalHeight - ((state.row + 1) * cellHeight)
                 let rect = CGRect(x: x, y: y, width: cellWidth, height: cellHeight)
                 guard let cropped = cgImage.cropping(to: rect) else { continue }
+                guard !Self.isTransparentFrame(cropped) else { continue }
                 let outputImage = state.shouldMirrorFrames ? Self.mirroredAroundVisibleCenter(cropped) : cropped
                 let image = NSImage(cgImage: outputImage, size: NSSize(width: cellWidth, height: cellHeight))
                 frames.append(image)
             }
             frameImages[state] = frames
         }
+    }
+
+    private static func isTransparentFrame(_ image: CGImage) -> Bool {
+        visiblePixelBounds(in: image) == nil
     }
 
     private static func mirroredAroundVisibleCenter(_ image: CGImage) -> CGImage {

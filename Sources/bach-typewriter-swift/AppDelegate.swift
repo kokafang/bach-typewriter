@@ -24,6 +24,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         petWindowController.window?.makeKeyAndOrderFront(nil)
 
         statusController = StatusBarController(
+            melodyTracks: melodyPlayer.tracks,
             onShow: { [weak petWindowController] in
                 petWindowController?.showWindow(nil)
                 petWindowController?.window?.makeKeyAndOrderFront(nil)
@@ -43,6 +44,9 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
             },
             onSelectInstrument: { [weak self] instrument in
                 self?.selectInstrument(instrument)
+            },
+            onSelectMelody: { [weak self] id in
+                self?.selectMelody(id: id)
             },
             onQuit: {
                 NSApp.terminate(nil)
@@ -65,6 +69,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         statusController?.setTypingNotesEnabled(typingNotesEnabled)
         statusController?.setSoundEnabled(soundEngine.isEnabled)
         statusController?.setSelectedInstrument(soundEngine.instrument)
+        statusController?.setSelectedMelody(id: melodyPlayer.selectedTrack.id)
         statusController?.setPermissionStatus(AccessibilityGuide.permissionStatus())
         statusController?.setLastKeySignal("waiting")
         petWindowController.setState(.idle)
@@ -129,6 +134,12 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         soundEngine.instrument = instrument
         statusController?.setSelectedInstrument(instrument)
         playTestNote()
+    }
+
+    private func selectMelody(id: String) {
+        melodyPlayer.selectTrack(id: id)
+        statusController?.setSelectedMelody(id: melodyPlayer.selectedTrack.id)
+        playNextNote()
     }
 
     private func showKeyboardPermissionIntroIfNeeded() {

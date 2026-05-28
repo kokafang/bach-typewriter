@@ -16,4 +16,4 @@ export HOME="$ROOT/.home"
 mkdir -p "$HOME/Library/Caches/org.swift.swiftpm" "$HOME/Library/org.swift.swiftpm/configuration" "$HOME/Library/org.swift.swiftpm/security"
 
 cd "$ROOT"
-swift run --disable-sandbox
+swift run --disable-sandbox bach-typewriter-swift

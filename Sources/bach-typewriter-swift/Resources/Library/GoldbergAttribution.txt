@@ -1,0 +1,8 @@
+Bach Typewriter includes monophonic note sequences generated from the Mutopia
+Project LilyPond soprano voices for J. S. Bach's Goldberg Variations, BWV 988.
+
+Source: Mutopia Project, Bach-Gesellschaft source edition
+Collection: https://www.mutopiaproject.org/cgibin/make-table.cgi?collection=bachgb&preview=1
+License: Creative Commons Attribution-ShareAlike 3.0
+
+The app defaults to Goldberg Variation 1.

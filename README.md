@@ -12,6 +12,7 @@
 - Animated sprite states for idle, typing, waiting, review, and failure moments.
 - Global keyboard listening with local fallback, so notes can play while you type in other apps.
 - Sequential melody playback using bundled WAV samples and `AVAudioEngine`.
+- Music Library menu with the full Goldberg Aria and Variations 1-30, defaulting to Variation 1.
 - Menu bar controls for showing Bach, pausing typing notes, muting sound, playing a test note, and quitting.
 - Instrument choices: sampled harpsichord plus macOS General MIDI piano, celesta, harpsichord, and church organ.
 - Accessibility and Input Monitoring helpers that open the right macOS settings panel.
@@ -21,6 +22,7 @@
 - 多种精灵动画状态：待机、输入、等待授权、试听、异常反馈等。
 - 支持全局键盘监听，也有本地监听兜底，因此在其他 App 中打字也能触发音符。
 - 使用内置 WAV 采样和 `AVAudioEngine` 顺序播放旋律。
+- 曲库菜单包含完整《哥德堡变奏曲》Aria 和第 1-30 变奏，默认选中第 1 变奏。
 - 菜单栏控制：显示巴赫、暂停打字音符、静音、播放测试音、退出。
 - 乐器可选：采样羽管键琴，以及 macOS General MIDI 的钢琴、钢片琴、羽管键琴、教堂管风琴。
 - 内置辅助功能和输入监控权限引导，可直接打开对应的 macOS 设置页。

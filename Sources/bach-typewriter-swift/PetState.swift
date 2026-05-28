@@ -28,7 +28,8 @@ enum PetState: String {
     var frames: Int {
         switch self {
         case .idle, .waiting, .review: return 6
-        case .runningRight, .runningLeft, .running, .failed: return 8
+        case .runningRight, .runningLeft, .failed: return 8
+        case .running: return 6
         case .waving: return 4
         case .jumping: return 5
         }
