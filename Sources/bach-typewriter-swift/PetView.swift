@@ -4,6 +4,7 @@ final class PetView: NSView {
     private let imageView = NSImageView()
     private let resizeHandle = ResizeHandleView()
     var onClick: (() -> Void)?
+    var onRightClick: ((NSEvent, NSView) -> Void)?
     private let onResize: (NSPoint) -> Void
     private let cellWidth = 192
     private let cellHeight = 208
@@ -46,6 +47,10 @@ final class PetView: NSView {
         }
         onClick?()
         window?.performDrag(with: event)
+    }
+
+    override func rightMouseDown(with event: NSEvent) {
+        onRightClick?(event, self)
     }
 
     override func mouseDragged(with event: NSEvent) {

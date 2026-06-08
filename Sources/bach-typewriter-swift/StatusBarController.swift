@@ -111,6 +111,10 @@ final class StatusBarController {
         }
     }
 
+    func showMenu(with event: NSEvent, for view: NSView) {
+        NSMenu.popUpContextMenu(menu, with: event, for: view)
+    }
+
     private func configureInstrumentMenu() {
         for instrument in Instrument.allCases {
             let item = NSMenuItem(

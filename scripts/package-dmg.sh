@@ -10,12 +10,15 @@ PACKAGES="$ROOT/Packages"
 STAGING="$PACKAGES/dmg-staging"
 DMG="$PACKAGES/BachTypewriter-arm64.dmg"
 ZIP="$PACKAGES/BachTypewriter-preview-arm64.zip"
+ICON="$ROOT/Assets/BachTypewriter.icns"
 
 cd "$ROOT"
 swift build -c release
 
 cp "$BUILD_DIR/bach-typewriter-swift" "$APP/Contents/MacOS/BachTypewriter"
 cp "$BUILD_DIR/BachAudioHelper" "$APP/Contents/MacOS/BachAudioHelper"
+cp "$ICON" "$RESOURCES/BachTypewriter.icns"
+plutil -replace CFBundleIconFile -string "BachTypewriter" "$APP/Contents/Info.plist"
 
 rm -rf "$RESOURCES/$BUNDLE_NAME"
 cp -R "$BUILD_DIR/$BUNDLE_NAME" "$RESOURCES/"

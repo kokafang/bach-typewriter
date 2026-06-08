@@ -10,13 +10,17 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     private var keepFrontObserver: NSObjectProtocol?
     private var typingNotesEnabled = true
     private var didShowKeyboardPermissionIntro = false
+    private let permissionIntroShownKey = "live.jiafeng.bach-typewriter.permissionIntroShown"
 
     func applicationDidFinishLaunching(_ notification: Notification) {
-        NSApp.setActivationPolicy(.accessory)
+        NSApp.setActivationPolicy(.regular)
 
         let petWindowController = PetWindowController(
             onPetTap: { [weak self] in
                 self?.handlePetTap()
+            },
+            onPetRightClick: { [weak self] event, view in
+                self?.showSettingsMenu(with: event, for: view)
             }
         )
         self.petWindowController = petWindowController
@@ -101,6 +105,11 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         playNextNote()
     }
 
+    private func showSettingsMenu(with event: NSEvent, for view: NSView) {
+        NSApp.activate(ignoringOtherApps: true)
+        statusController?.showMenu(with: event, for: view)
+    }
+
     private func playNextNote() {
         let note = melodyPlayer.next()
         print("Bach key press -> \(note.frequency)")
@@ -145,8 +154,13 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     private func showKeyboardPermissionIntroIfNeeded() {
         guard !didShowKeyboardPermissionIntro else { return }
         let status = AccessibilityGuide.permissionStatus()
-        guard !status.keyboardAccessGranted else { return }
+        if status.keyboardAccessGranted {
+            UserDefaults.standard.set(true, forKey: permissionIntroShownKey)
+            return
+        }
+        guard !UserDefaults.standard.bool(forKey: permissionIntroShownKey) else { return }
         didShowKeyboardPermissionIntro = true
+        UserDefaults.standard.set(true, forKey: permissionIntroShownKey)
 
         NSApp.activate(ignoringOtherApps: true)
 

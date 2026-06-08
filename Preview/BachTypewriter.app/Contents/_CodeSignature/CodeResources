@@ -4,6 +4,10 @@
 <dict>
 	<key>files</key>
 	<dict>
+		<key>Resources/BachTypewriter.icns</key>
+		<data>
+		CGkdayxm3eM4V0tggbE1Q5hMQuQ=
+		</data>
 		<key>Resources/bach-typewriter-swift_bach-typewriter-swift.bundle/A3.wav</key>
 		<data>
 		hp1jevlhqPra3I/tmMeTGViDGcM=
@@ -207,6 +211,13 @@
 			</data>
 			<key>requirement</key>
 			<string>cdhash H"062619bf7030b483c20070ddc3d6c0972bf9e53b"</string>
+		</dict>
+		<key>Resources/BachTypewriter.icns</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			peslfmfjlcLTSVIERSvWPEN/2RRFLG+Q5A2LOHUau4A=
+			</data>
 		</dict>
 		<key>Resources/bach-typewriter-swift_bach-typewriter-swift.bundle/A3.wav</key>
 		<dict>

@@ -11,7 +11,10 @@ final class PetWindowController: NSWindowController {
     private var idleTimer: Timer?
     private var keepFrontTimer: Timer?
 
-    init(onPetTap: @escaping () -> Void) {
+    init(
+        onPetTap: @escaping () -> Void,
+        onPetRightClick: @escaping (NSEvent, NSView) -> Void
+    ) {
         let panel = FloatingPetPanel(
             contentRect: NSRect(x: 100, y: 100, width: 230, height: 260),
             styleMask: [.borderless, .nonactivatingPanel],
@@ -21,6 +24,7 @@ final class PetWindowController: NSWindowController {
         panel.onKeyPress = onPetTap
         super.init(window: panel)
         petView.onClick = onPetTap
+        petView.onRightClick = onPetRightClick
         setupWindow(panel)
     }
 
