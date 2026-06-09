@@ -32,7 +32,7 @@ Packages/BachTypewriter-arm64.dmg
 - Sequential melody playback using bundled WAV samples and `AVAudioEngine`.
 - Music Library menu with the full Goldberg Aria and Variations 1-30, defaulting to Variation 1.
 - Menu bar controls for showing Bach, pausing typing notes, muting sound, playing a test note, and quitting.
-- Instrument choices: sampled harpsichord plus macOS General MIDI piano, celesta, harpsichord, and church organ.
+- Instrument choices: sampled harpsichord, the original web prototype's modern piano synth, plus macOS General MIDI piano, celesta, harpsichord, and church organ.
 - Accessibility and Input Monitoring helpers that open the right macOS settings panel.
 - Drag to move Bach; use the small lower-right handle to resize him.
 

@@ -7,12 +7,14 @@ final class SoundEngine {
         case harpsichord = 3
         case churchOrgan = 4
         case piano = 1
+        case modernPiano = 6
         case sampleHarpsichord = 0
 
         var menuTitle: String {
             switch self {
             case .sampleHarpsichord: return "Harpsichord (Sample)"
             case .piano: return "Piano (GM)"
+            case .modernPiano: return "Modern Piano / 现代钢琴"
             case .celesta: return "Celesta (GM)"
             case .harpsichord: return "Harpsichord (GM)"
             case .churchOrgan: return "Church Organ (GM)"
@@ -23,7 +25,7 @@ final class SoundEngine {
         var usesSamplePlayer: Bool {
             switch self {
             case .sampleHarpsichord, .nyaSample: return true
-            case .piano, .celesta, .harpsichord, .churchOrgan: return false
+            case .piano, .modernPiano, .celesta, .harpsichord, .churchOrgan: return false
             }
         }
 
@@ -31,14 +33,14 @@ final class SoundEngine {
             switch self {
             case .sampleHarpsichord: return note.resourceName
             case .nyaSample: return note.resourceName
-            case .piano, .celesta, .harpsichord, .churchOrgan: return note.name
+            case .piano, .modernPiano, .celesta, .harpsichord, .churchOrgan: return note.name
             }
         }
 
         func fallbackResourceName(for note: Note) -> String {
             switch self {
             case .nyaSample: return "nya"
-            case .sampleHarpsichord, .piano, .celesta, .harpsichord, .churchOrgan:
+            case .sampleHarpsichord, .piano, .modernPiano, .celesta, .harpsichord, .churchOrgan:
                 return note.resourceName
             }
         }
@@ -49,6 +51,8 @@ final class SoundEngine {
                 return "sample"
             case .nyaSample:
                 return "sample-pitched:nya:G4"
+            case .modernPiano:
+                return "synth-modern-piano"
             case .piano, .celesta, .harpsichord, .churchOrgan:
                 return "gm:\(rawValue)"
             }

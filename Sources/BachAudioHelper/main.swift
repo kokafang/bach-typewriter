@@ -53,6 +53,7 @@ final class EnginePlayer {
     }
     private var nextSampleVoiceIndex = 0
     private var buffers: [String: AVAudioPCMBuffer] = [:]
+    private var modernPianoBuffers: [String: AVAudioPCMBuffer] = [:]
     private var sampleMidiNotes: [String: Int] = [:]
     private var nearestSampleCache: [String: String] = [:]
     private var sampleFormat: AVAudioFormat?
@@ -111,6 +112,18 @@ final class EnginePlayer {
         }
         let pitchCents = Float(Int(targetMidiNote) - Int(rootMidiNote)) * 100
         playSampleBuffer(buffer, pitchCents: pitchCents)
+    }
+
+    func playModernPiano(note noteName: String) {
+        guard let midiNote = midiNoteNumber(for: noteName),
+              let buffer = modernPianoBuffer(for: noteName, midiNote: midiNote) else { return }
+        do {
+            try ensureEngineRunning()
+        } catch {
+            fputs("BachAudioHelper modern piano engine restart failed: \(error)\n", stderr)
+            return
+        }
+        playSampleBuffer(buffer, pitchCents: 0)
     }
 
     func playGM(note noteName: String, instrument: GMInstrument) {
@@ -190,6 +203,65 @@ final class EnginePlayer {
         let voice = sampleVoices[nextSampleVoiceIndex]
         nextSampleVoiceIndex = (nextSampleVoiceIndex + 1) % sampleVoices.count
         return voice
+    }
+
+    private func modernPianoBuffer(for noteName: String, midiNote: UInt8) -> AVAudioPCMBuffer? {
+        if let buffer = modernPianoBuffers[noteName] {
+            return buffer
+        }
+
+        guard let format = sampleFormat else { return nil }
+        let buffer = makeModernPianoBuffer(midiNote: midiNote, format: format)
+        modernPianoBuffers[noteName] = buffer
+        return buffer
+    }
+
+    private func makeModernPianoBuffer(midiNote: UInt8, format: AVAudioFormat) -> AVAudioPCMBuffer? {
+        let duration = 2.5
+        let sampleRate = format.sampleRate
+        let frameCount = AVAudioFrameCount(duration * sampleRate)
+        guard let buffer = AVAudioPCMBuffer(pcmFormat: format, frameCapacity: frameCount),
+              let channels = buffer.floatChannelData else {
+            return nil
+        }
+
+        buffer.frameLength = frameCount
+        let frequency = 440.0 * pow(2.0, (Double(midiNote) - 69.0) / 12.0)
+        let cutoff = 1500.0
+        let rc = 1.0 / (2.0 * Double.pi * cutoff)
+        let dt = 1.0 / sampleRate
+        let lowpassAlpha = dt / (rc + dt)
+        let attackDuration = 0.01
+        let decayDuration = 2.0
+        let peakGain = 0.25
+        let decayFloor = 0.001
+        let decayRatio = decayFloor / peakGain
+        var filteredSample = 0.0
+
+        for frame in 0..<Int(frameCount) {
+            let time = Double(frame) / sampleRate
+            let phase = (frequency * time).truncatingRemainder(dividingBy: 1.0)
+            let triangle = 4.0 * abs(phase - 0.5) - 1.0
+            filteredSample += lowpassAlpha * (triangle - filteredSample)
+
+            let envelope: Double
+            if time < attackDuration {
+                envelope = peakGain * (time / attackDuration)
+            } else if time < decayDuration {
+                let progress = (time - attackDuration) / (decayDuration - attackDuration)
+                envelope = peakGain * pow(decayRatio, progress)
+            } else {
+                let progress = min((time - decayDuration) / (duration - decayDuration), 1.0)
+                envelope = decayFloor * (1.0 - progress)
+            }
+
+            let output = Float(filteredSample * envelope)
+            for channel in 0..<Int(format.channelCount) {
+                channels[channel][frame] = output
+            }
+        }
+
+        return buffer
     }
 
     private func loadBuffers(soundRoot: URL) throws {
@@ -370,6 +442,11 @@ do {
                 player.playPitchedSample(parameters[1], targetNoteName: noteName, rootNoteName: parameters[2])
                 continue
             }
+        }
+
+        if mode == "synth-modern-piano" {
+            player.playModernPiano(note: noteName)
+            continue
         }
 
         if mode.hasPrefix("gm:"),
